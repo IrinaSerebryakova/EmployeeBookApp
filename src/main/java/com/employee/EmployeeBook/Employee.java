@@ -16,22 +16,15 @@ public class Employee {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
 
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
     @Override
     public String toString() {
-        return '{' + " firstName: " + '\"' + getFirstName() + '\"' +
-               ", lastName: " + '\"' + getLastName() + '\"' +
+        return '{' + " firstName: " + '\"' + firstName + '\"' +
+               ", lastName: " + '\"' + lastName + '\"' +
                 '}';
     }
 
@@ -39,11 +32,11 @@ public class Employee {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Employee employee)) return false;
-        return Objects.equals(getFirstName(), employee.getFirstName()) && Objects.equals(getLastName(), employee.getLastName());
+        return Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getFirstName(),getLastName());
+        return Objects.hash(firstName, lastName);
     }
 }

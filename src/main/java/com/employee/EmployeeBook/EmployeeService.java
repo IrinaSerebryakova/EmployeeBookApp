@@ -4,15 +4,11 @@ import com.employee.EmployeeBook.exception.ArrayIsFull;
 import com.employee.EmployeeBook.exception.EmployeeAlreadyAdded;
 import com.employee.EmployeeBook.exception.EmployeeNotFound;
 
-import java.util.List;
+import java.util.Collection;
 
 public interface EmployeeService {
-    String welcome();
-    String add(String firstName, String lastName) throws EmployeeAlreadyAdded, ArrayIsFull;
-    String remove(String firstName, String lastName) throws EmployeeNotFound;
-    String find(String firstName, String lastName) throws EmployeeNotFound;
-
-    List printInfo(List list);
-    void checkForArrayIsFull(List<Employee> employees);
-    List<Employee> getEmployees();
+    Employee add(String firstName, String lastName) throws EmployeeAlreadyAdded, ArrayIsFull;
+    Employee remove(String firstName, String lastName) throws EmployeeNotFound;
+    Employee find(String firstName, String lastName) throws EmployeeNotFound;
+    Collection<Employee> print();
 }
