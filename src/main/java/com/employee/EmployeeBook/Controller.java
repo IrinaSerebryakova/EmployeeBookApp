@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/employee")
@@ -18,25 +19,23 @@ public class Controller {
         this.employeeService = employeeService;
     }
 
-    @GetMapping(path = "/add")
-    public Employee add(@RequestParam ("firstName") String firstName,
-                      @RequestParam ("lastName") String lastName) throws EmployeeAlreadyAdded, ArrayIsFull {
-        return employeeService.add(firstName,lastName);
+    @GetMapping(path = "/put")
+    public Employee put(@RequestParam ("fullName") String fullName,
+                        @RequestParam ("value") int value) throws EmployeeAlreadyAdded, ArrayIsFull {
+                     return employeeService.put(fullName,value);
     }
 
     @GetMapping(path = "/remove")
-     public Employee remove(@RequestParam ("firstName") String firstName,
-                            @RequestParam ("lastName") String lastName) throws EmployeeNotFound {
-        return employeeService.remove(firstName,lastName);
+     public Employee remove(@RequestParam ("fullName") String fullName) throws EmployeeNotFound {
+        return employeeService.remove(fullName);
     }
     @GetMapping(path = "/find")
-    public Employee find(@RequestParam ("firstName") String firstName,
-                         @RequestParam ("lastName") String lastName) throws EmployeeNotFound {
-       return  employeeService.find(firstName,lastName);
+    public Employee find(@RequestParam ("fullName") String fullName) throws EmployeeNotFound {
+       return  employeeService.find(fullName);
     }
 
     @GetMapping
-    public Collection<Employee> print(){
+    public Map<String, Integer> print(){
         return employeeService.print();
     }
 }

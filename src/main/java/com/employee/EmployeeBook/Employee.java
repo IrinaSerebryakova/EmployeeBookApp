@@ -3,40 +3,42 @@ package com.employee.EmployeeBook;
 import java.util.Objects;
 
 public class Employee {
-    private String firstName;
-    private String lastName;
+    private String fullName;
+    private int value;
 
 
-    public Employee(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public Employee(String fullName, int value) {
+        this.fullName = fullName;
+        this.value = value;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFullName() {
+        return fullName;
     }
 
 
-    public String getLastName() {
-        return lastName;
+    public int getValue() {
+        return value;
     }
 
-    @Override
-    public String toString() {
-        return '{' + " firstName: " + '\"' + firstName + '\"' +
-               ", lastName: " + '\"' + lastName + '\"' +
-                '}';
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Employee employee)) return false;
-        return Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName);
+        return value == employee.value && Objects.equals(fullName, employee.fullName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName);
+        return Objects.hash(fullName, value);
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "fullName='" + fullName + '\'' +
+                ", value=" + value +
+                '}';
     }
 }
