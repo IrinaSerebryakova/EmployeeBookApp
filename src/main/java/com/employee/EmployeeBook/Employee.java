@@ -1,66 +1,44 @@
-import java.util.Objects;
+package com.employee.EmployeeBook;
 
+import java.util.Objects;
 
 public class Employee {
     private String fullName;
-    private int department;
-    private double salary;
-
-    public int getId() {
-        return id;
-    }
-
-    private final int id;
-
-    public static int counter = 1;
+    private int value;
 
 
-
-    public Employee(String fullName, int department, double salary) {
+    public Employee(String fullName, int value) {
         this.fullName = fullName;
-        this.department = department;
-        this.salary = salary;
-        this.id = counter++;
+        this.value = value;
     }
 
-    public String getFullName(){
+    public String getFullName() {
         return fullName;
     }
 
-    public int getDepartment() {
-        return department;
+
+    public int getValue() {
+        return value;
     }
 
-    public void setDepartment(int department) {
-        this.department = department;
-    }
 
-    public double getSalary() {
-        return salary;
-    }
-
-    public void setSalary(double salary) {
-        this.salary = salary;
-    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Employee employee = (Employee) o;
-        return Objects.equals(fullName, employee.fullName) && Objects.equals(department, employee.department) && Objects.equals(salary, employee.salary);
+        if (!(o instanceof Employee employee)) return false;
+        return value == employee.value && Objects.equals(fullName, employee.fullName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(fullName, department, salary);
+        return Objects.hash(fullName, value);
     }
 
     @Override
     public String toString() {
-        return "Employee{" + "id:" + id +
-                ", fullName='" + fullName + '\'' +
-                ", department='" + department + '\'' +
-                ", salary='" + salary + '\'' +
+        return "Employee{" +
+                "fullName='" + fullName + '\'' +
+                ", value=" + value +
                 '}';
     }
 }
