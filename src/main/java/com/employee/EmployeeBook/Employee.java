@@ -4,41 +4,45 @@ import java.util.Objects;
 
 public class Employee {
     private String fullName;
-    private int value;
-
-
-    public Employee(String fullName, int value) {
-        this.fullName = fullName;
-        this.value = value;
-    }
+    private int department;
+    private double salary;
 
     public String getFullName() {
         return fullName;
     }
 
-
-    public int getValue() {
-        return value;
+    public int getDepartment() {
+        return department;
     }
 
+    public double getSalary() {
+        return salary;
+    }
+
+
+    public Employee(int department, double salary) {
+        this.department = department;
+        this.salary = salary;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(fullName, department, salary);
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Employee employee)) return false;
-        return value == employee.value && Objects.equals(fullName, employee.fullName);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(fullName, value);
+        return department == employee.department && Double.compare(employee.salary, salary) == 0 && Objects.equals(fullName, employee.fullName);
     }
 
     @Override
     public String toString() {
         return "Employee{" +
                 "fullName='" + fullName + '\'' +
-                ", value=" + value +
+                ", department=" + department +
+                ", salary=" + salary +
                 '}';
     }
 }
