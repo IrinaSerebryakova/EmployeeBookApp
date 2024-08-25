@@ -7,8 +7,9 @@ import com.employee.EmployeeBook.exception.EmployeeNotFound;
 import java.util.Map;
 
 public interface EmployeeService {
-    Employee put(String fullName, double salary) throws EmployeeAlreadyAdded, ArrayIsFull;
-    Employee remove(String fullName) throws EmployeeNotFound;
-    Employee find(String fullName) throws EmployeeNotFound;
-    Map<String, Integer> print();
+    String checkTheInputOfName(String name);
+    Employee put(String firstName, String lastName, int department, double salary) throws EmployeeAlreadyAdded, ArrayIsFull;
+    String remove(String firstName, String lastName) throws EmployeeNotFound;
+    Employee find(String firstName, String lastName) throws EmployeeNotFound;
+    Map<Integer, Employee> printAll();
 }

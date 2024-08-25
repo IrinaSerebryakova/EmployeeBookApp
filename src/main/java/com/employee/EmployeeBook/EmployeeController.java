@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Map;
-
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
@@ -19,22 +17,26 @@ public class EmployeeController {
     }
 
     @GetMapping(path = "/put")
-    public Employee put(@RequestParam ("fullName") String fullName,
-                        @RequestParam ("value") int value) throws EmployeeAlreadyAdded, ArrayIsFull {
-                     return employeeService.put(fullName,value);
+    public Employee put(@RequestParam ("firstName") String firstName,
+                        @RequestParam ("lastName") String lastName,
+                        @RequestParam ("departmentId") int department,
+                        @RequestParam ("salary") double salary) throws EmployeeAlreadyAdded, ArrayIsFull {
+                     return employeeService.put(firstName,lastName,department,salary);
     }
 
     @GetMapping(path = "/remove")
-     public Employee remove(@RequestParam ("fullName") String fullName) throws EmployeeNotFound {
-        return employeeService.remove(fullName);
+     public String remove(@RequestParam ("firstName") String firstName,
+                          @RequestParam ("lastName") String lastName) throws EmployeeNotFound {
+        return employeeService.remove(firstName,lastName);
     }
     @GetMapping(path = "/find")
-    public Employee find(@RequestParam ("fullName") String fullName) throws EmployeeNotFound {
-       return  employeeService.find(fullName);
+    public Employee find(@RequestParam ("firstName") String firstName,
+                         @RequestParam ("lastName") String lastName) throws EmployeeNotFound {
+       return  employeeService.find(firstName,lastName);
     }
 
     @GetMapping
-    public Map<String, Integer> print(){
-        return employeeService.print();
+    public String printAll(){
+        return employeeService.printAll().toString();
     }
 }
