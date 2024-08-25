@@ -15,7 +15,6 @@ public class EmployeeController {
     public EmployeeController(EmployeeServiceImpl employeeService) {   // инжектим сервис в контроллер
         this.employeeService = employeeService;
     }
-
     @GetMapping(path = "/put")
     public Employee put(@RequestParam ("firstName") String firstName,
                         @RequestParam ("lastName") String lastName,
@@ -23,7 +22,6 @@ public class EmployeeController {
                         @RequestParam ("salary") double salary) throws EmployeeAlreadyAdded, ArrayIsFull {
                      return employeeService.put(firstName,lastName,department,salary);
     }
-
     @GetMapping(path = "/remove")
      public String remove(@RequestParam ("firstName") String firstName,
                           @RequestParam ("lastName") String lastName) throws EmployeeNotFound {
