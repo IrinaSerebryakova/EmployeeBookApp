@@ -1,11 +1,16 @@
 package com.employee.EmployeeBook;
 
-import java.util.Map;
+import java.util.Collection;
 
 public interface DepartmentService {
-    double calculateSumOfSalaryForMonth();
-    Employee findEmployeeWithMinSalary();
-    double salariesByEmployee();
+    Employee findEmployeeWithMaxSalary(int department);
+
+    Employee findEmployeeWithMinSalary(int department);
+
+    Object findEmployeesByDepartment();
+
+
+    String findEmployeesByDepartment(Integer department);
 
 }
 
