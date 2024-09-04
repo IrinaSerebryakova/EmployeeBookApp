@@ -3,81 +3,59 @@ package com.employee.EmployeeBook;
 import com.employee.EmployeeBook.exception.ArrayIsFull;
 import com.employee.EmployeeBook.exception.EmployeeAlreadyAdded;
 import com.employee.EmployeeBook.exception.EmployeeNotFound;
-import com.employee.EmployeeBook.exception.IncorrectInput;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
-import static org.apache.commons.lang3.StringUtils.isAlpha;
+import static java.util.Arrays.stream;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
-
-    static Map<Integer, Employee> employees = new HashMap<>(Map.of(
-            0, new Employee("Пугачёва", "Алла", 1, 465000.00),
-            1, new Employee("Филипп", "Киркоров", 1, 455000.00),
-            2, new Employee("Игорь", "Козлов", 2, 225000.00),
-            3, new Employee("Иван", "Козлов", 2, 125000.00),
-            4, new Employee("Виктория", "Бронина", 2, 120000.00),
-            5, new Employee("Святослав", "Козлов", 3, 156000.00),
-            6, new Employee("Марина", "Восточная", 4, 110000.00),
-            7, new Employee("Эльвира", "Васильева", 5, 75000.00),
-            8, new Employee("Светлана", "Сухорукова", 4, 138000.00),
-            9, new Employee("Вячеслав", "Сухоруков", 2, 120000.00)
-    ));
-
-    public static Map<Integer, Employee> getEmployees() {
-        return employees;
-    }
-
-    public String checkTheInputOfName(String name) {
-        if (isAlpha(name)) {
-            return name;
-        }
-        throw new IncorrectInput("Некорректный ввод");
-    }
-
+    Map<String, Employee> employees = new HashMap<>(Map.of(
+            "Пугачёва Алла", new Employee("Пугачёва", "Алла", 1, 465000),
+            "Киркоров Филипп", new Employee("Киркоров","Филипп",1, 455000),
+            "Козлов Игорь", new Employee("Козлов", "Игорь",2, 225000),
+            "Козлов Иван", new Employee("Козлов","Иван",2, 125000),
+            "Бронина Виктория", new Employee("Бронина","Виктория",2, 120000),
+            "Козлов Святослав", new Employee("Козлов","Святослав",3, 156000),
+            "Восточная Марина", new Employee("Восточная","Марина",4, 110000),
+            "Васильева Эльвира", new Employee("Васильева","Эльвира",5, 75000),
+            "Сухорукова Светлана", new Employee("Сухорукова","Светлана",4, 138000),
+            "Сухоруков Вячеслав", new Employee("Сухоруков","Вячеслав",2, 120000)
+            ));
 
     @Override
-    public Employee put(String firstName, String lastName, int department, double salary) throws EmployeeAlreadyAdded, ArrayIsFull {
-        checkTheInputOfName(firstName);
-        checkTheInputOfName(lastName);
-        for (Employee employee : employees.values()) {
-            if (employee.getFirstName() != firstName && employee.getLastName() != lastName) {
-                employees.put(employees.size(), new Employee(firstName, lastName, department, salary));
-            }
+    public Employee put(String lastName, String firstName, int department, int salary) throws EmployeeAlreadyAdded, ArrayIsFull {
+       String fullName = lastName + " " + firstName;
+        if (!employees.containsKey(fullName))
+            employees.put(fullName, new Employee(lastName, firstName, department, salary));
             throw new EmployeeAlreadyAdded("Сотрудник уже существует");
-        }
-        return new Employee(firstName, lastName, department, salary);
     }
 
 
     @Override
-    public String remove(String firstName, String lastName) throws EmployeeNotFound {
-        checkTheInputOfName(firstName);
-        checkTheInputOfName(lastName);
-        for (Employee employee : employees.values()) {
-            if (employee.getFirstName() == firstName && employee.getLastName() == lastName) {
-                employees.remove(firstName, lastName);
-            }
+    public Employee remove(String lastName, String firstName) throws EmployeeNotFound {
+        String fullName = lastName + " " + firstName;
+        if (employees.containsKey(fullName)) {
+            Employee markToRemove = employees.get(fullName);
+            employees.remove(fullName);
+            return markToRemove;
         }
         throw new EmployeeNotFound("Сотрудник не найден");
     }
 
     @Override
-    public Employee find(String firstName, String lastName) throws EmployeeNotFound {
-            checkTheInputOfName(firstName);
-            checkTheInputOfName(lastName);
-            for (Employee employee : employees.values()) {
-                if (employee.getFirstName().contains(firstName) && employee.getLastName().contains(lastName)) {
-                    return employee;
-                }
-            }
-        throw new EmployeeNotFound("Сотрудник не найден");
+    public Employee find(String lastName, String firstName) throws EmployeeNotFound {
+        String fullName = lastName + " " + firstName;
+        if (employees.containsKey(fullName)) {
+            return employees.get(fullName);
         }
+        throw new EmployeeNotFound("Сотрудник не найден");
+    }
 
     @Override
-    public Map<Integer, Employee> printAll() {
+    public Map<String, Employee> printAll(){
         return employees;
     }
+
 }

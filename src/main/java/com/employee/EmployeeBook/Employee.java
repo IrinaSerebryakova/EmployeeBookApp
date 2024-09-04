@@ -8,17 +8,22 @@ public class Employee {
     private final String firstName;
     private final String lastName;
     private int department;
-    private double salary;
+    private int salary;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Employee employee)) return false;
+        return department == employee.department && salary == employee.salary && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName);
+    }
 
-    public Employee(String lastName, String firstName,  int department, double salary) {
+    public Employee(String lastName, String firstName,  int department, int salary) {
         this.firstName = capitalize(firstName);
         this.lastName = capitalize(lastName);
         this.department = department;
         this.salary = salary;
     }
 
-
-    public String getFirstName() {
+      public String getFirstName() {
         return firstName;
     }
 
@@ -31,25 +36,11 @@ public class Employee {
         return department;
     }
 
-    public void setDepartment(int department) {
-        this.department = department;
-    }
-
-    public double getSalary() {
+    public int getSalary() {
         return salary;
     }
 
-    public void setSalary(double salary) {
-        this.salary = salary;
-    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Employee employee = (Employee) o;
-        return department == employee.department && Double.compare(employee.salary, salary) == 0 && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName);
-    }
 
     @Override
     public int hashCode() {

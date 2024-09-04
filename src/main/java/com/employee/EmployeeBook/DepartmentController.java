@@ -27,12 +27,12 @@ public class DepartmentController {
     }
 
     @GetMapping("/all")
-    public String findEmployees() {
-        return departmentService.findEmployeesByDepartment();
+    public Map<Integer, List<Employee>> findEmployees() {
+        return departmentService.findEmployeesByDepartments();
     }
 
     @GetMapping(path = "/all", params = {"department"})
-    public String findEmployees(@RequestParam int department) {
+    public Collection<Employee>  findEmployees(@RequestParam int department) {
         return departmentService.findEmployeesByDepartment(department);
     }
 }

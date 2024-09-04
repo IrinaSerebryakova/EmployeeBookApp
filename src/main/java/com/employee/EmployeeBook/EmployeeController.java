@@ -16,21 +16,21 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
     @GetMapping(path = "/put")
-    public Employee put(@RequestParam ("firstName") String firstName,
-                        @RequestParam ("lastName") String lastName,
-                        @RequestParam ("departmentId") int department,
-                        @RequestParam ("salary") double salary) throws EmployeeAlreadyAdded, ArrayIsFull {
-                     return employeeService.put(firstName,lastName,department,salary);
+    public Employee put(@RequestParam ("lastName") String lastName,
+                        @RequestParam ("firstName") String firstName,
+                        @RequestParam ("department") int department,
+                        @RequestParam ("salary") int salary) throws EmployeeAlreadyAdded, ArrayIsFull {
+                     return employeeService.put(lastName,firstName,department,salary);
     }
     @GetMapping(path = "/remove")
-     public String remove(@RequestParam ("firstName") String firstName,
-                          @RequestParam ("lastName") String lastName) throws EmployeeNotFound {
-        return employeeService.remove(firstName,lastName);
+     public Employee remove(@RequestParam ("lastName") String lastName,
+                          @RequestParam ("firstName") String firstName) throws EmployeeNotFound {
+        return employeeService.remove(lastName,firstName);
     }
     @GetMapping(path = "/find")
-    public Employee find(@RequestParam ("firstName") String firstName,
-                         @RequestParam ("lastName") String lastName) throws EmployeeNotFound {
-       return  employeeService.find(firstName,lastName);
+    public Employee find(@RequestParam ("lastName") String lastName,
+                         @RequestParam ("firstName") String firstName) throws EmployeeNotFound {
+       return  employeeService.find(lastName,firstName);
     }
 
     @GetMapping
