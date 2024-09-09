@@ -1,7 +1,8 @@
 package com.employee.EmployeeBook;
 
 import java.util.Objects;
-import static org.apache.commons.lang3.StringUtils.capitalize;
+
+import static org.apache.commons.lang3.StringUtils.*;
 
 
 public class Employee {
@@ -9,6 +10,7 @@ public class Employee {
     private final String lastName;
     private int department;
     private int salary;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -16,14 +18,14 @@ public class Employee {
         return department == employee.department && salary == employee.salary && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName);
     }
 
-    public Employee(String lastName, String firstName,  int department, int salary) {
-        this.firstName = capitalize(firstName);
-        this.lastName = capitalize(lastName);
+    public Employee(String lastName, String firstName, int department, int salary) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.department = department;
         this.salary = salary;
     }
 
-      public String getFirstName() {
+    public String getFirstName() {
         return firstName;
     }
 
@@ -39,7 +41,6 @@ public class Employee {
     public int getSalary() {
         return salary;
     }
-
 
 
     @Override

@@ -7,12 +7,8 @@ import java.util.Optional;
 
 public interface DepartmentService {
     Employee findEmployeeWithMaxSalary(int department);
-
     Employee findEmployeeWithMinSalary(int department);
-
-
     Map<Integer, List<Employee>> findEmployeesByDepartments();
-
     List<Employee> findEmployeesByDepartment(int department);
 }
 

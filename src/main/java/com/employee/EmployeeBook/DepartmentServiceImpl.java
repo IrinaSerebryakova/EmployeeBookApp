@@ -32,13 +32,11 @@ public class DepartmentServiceImpl implements DepartmentService {
                 .get();
     }
 
-
     @Override
     public Map<Integer, List<Employee>> findEmployeesByDepartments(){
         return employeeService.printAll().values().stream()
                 .sorted(comparing(e -> e.getLastName()))
                 .collect(groupingBy(Employee::getDepartment));
-
     }
     @Override
     public List<Employee> findEmployeesByDepartment(int department) {

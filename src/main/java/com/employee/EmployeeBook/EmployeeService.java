@@ -11,4 +11,6 @@ public interface EmployeeService {
     Employee remove(String lastName, String firstName) throws EmployeeNotFound;
     Employee find(String lastName, String firstName) throws EmployeeNotFound;
     Map<String, Employee> printAll();
+    String checkAndCorrectName(String name);
+    void checkNumber(Integer... numbers);
 }
