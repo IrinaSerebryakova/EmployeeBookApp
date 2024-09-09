@@ -10,8 +10,9 @@ public interface DepartmentService {
 
     Employee findEmployeeWithMinSalary(int department);
 
-    Map<Integer, List<Employee>> findEmployeesByDepartment();
 
-    Collection<Employee> findEmployeesByDepartment(Integer department);
+    Map<Integer, List<Employee>> findEmployeesByDepartments();
+
+    List<Employee> findEmployeesByDepartment(int department);
 }
 
