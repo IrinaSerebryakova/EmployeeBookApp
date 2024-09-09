@@ -1,66 +1,62 @@
+package com.employee.EmployeeBook;
+
 import java.util.Objects;
+
+import static org.apache.commons.lang3.StringUtils.*;
 
 
 public class Employee {
-    private String fullName;
+    private final String firstName;
+    private final String lastName;
     private int department;
-    private double salary;
+    private int salary;
 
-    public int getId() {
-        return id;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Employee employee)) return false;
+        return department == employee.department && salary == employee.salary && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName);
     }
 
-    private final int id;
-
-    public static int counter = 1;
-
-
-
-    public Employee(String fullName, int department, double salary) {
-        this.fullName = fullName;
+    public Employee(String lastName, String firstName, int department, int salary) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.department = department;
         this.salary = salary;
-        this.id = counter++;
     }
 
-    public String getFullName(){
-        return fullName;
+    public String getFirstName() {
+        return firstName;
     }
+
+    public String getLastName() {
+        return lastName;
+    }
+
 
     public int getDepartment() {
         return department;
     }
 
-    public void setDepartment(int department) {
-        this.department = department;
-    }
-
-    public double getSalary() {
+    public int getSalary() {
         return salary;
     }
 
-    public void setSalary(double salary) {
-        this.salary = salary;
-    }
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Employee employee = (Employee) o;
-        return Objects.equals(fullName, employee.fullName) && Objects.equals(department, employee.department) && Objects.equals(salary, employee.salary);
-    }
 
     @Override
     public int hashCode() {
-        return Objects.hash(fullName, department, salary);
+        return Objects.hash(firstName, lastName, department, salary);
     }
 
     @Override
     public String toString() {
-        return "Employee{" + "id:" + id +
-                ", fullName='" + fullName + '\'' +
-                ", department='" + department + '\'' +
-                ", salary='" + salary + '\'' +
-                '}';
+        return "Employee: " +
+                " lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", department=" + department +
+                ", salary=" + salary +
+                '}' + "\n";
     }
+
 }
+
