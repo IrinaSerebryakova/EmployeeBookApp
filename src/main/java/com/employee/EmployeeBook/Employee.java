@@ -6,8 +6,9 @@ import static org.apache.commons.lang3.StringUtils.*;
 
 
 public class Employee {
-    private final String firstName;
-    private final String lastName;
+
+    private String firstName;
+    private String lastName;
     private int department;
     private int salary;
 
@@ -28,9 +29,14 @@ public class Employee {
     public String getFirstName() {
         return firstName;
     }
-
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
     public String getLastName() {
         return lastName;
+    }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
 
@@ -38,8 +44,16 @@ public class Employee {
         return department;
     }
 
+    public void setDepartment(int department) {
+        this.department = department;
+    }
+
     public int getSalary() {
         return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
     }
 
 

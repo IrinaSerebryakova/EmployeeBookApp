@@ -42,7 +42,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public String checkAndCorrectName(String name) {
-            if (!isAlpha(name)) {
+            if (!isAlpha(name) || name == null) {
                 throw new IncorrectInput("Неправильный ввод имени");
             }
            return capitalize(lowerCase(name));
@@ -51,7 +51,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void checkNumber(Integer... numbers) {
         for (Integer number : numbers) {
-            if (!isNumeric(Integer.toString(number))) {
+            if (!isNumeric(Integer.toString(number)) || number == 0 || number < 0) {
                 throw new IncorrectInput("Необходимо ввести цифровое значение");
             }
         }
