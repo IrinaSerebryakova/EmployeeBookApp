@@ -25,7 +25,6 @@ public class EmployeeServiceImpl implements EmployeeService {
             "Сухорукова Светлана", new Employee("Сухорукова", "Светлана", 4, 138000),
             "Сухоруков Вячеслав", new Employee("Сухоруков", "Вячеслав", 2, 120000)
     ));
-
     @Override
     public Employee put(String lastName, String firstName, int department, int salary) throws EmployeeAlreadyAdded, ArrayIsFull {
         lastName = checkAndCorrectName(lastName);

@@ -32,6 +32,7 @@ public class EmployeeServiceImplTest {
                 "Сухорукова Светлана", new Employee("Сухорукова", "Светлана", 4, 138000)
         ));
 
+
         Employee employeeForTests1 = new Employee("вЕрНоПоДдАнНый", "бОрИс", 4, 50000);
         Employee employeeForTests2 = new Employee("спокойный", "борис", 4, 50000);
 

@@ -40,7 +40,6 @@ public class DepartmentServiceImplTest {
         Assertions.assertEquals(2, departmentService.findEmployeeWithMaxSalary(2));
         verify(departmentService, times(1)).findEmployeeWithMaxSalary(2);
     }
-
     @Test
     public void shouldFindEmployeeWithMinSalary() {
         when(departmentService.findEmployeeWithMinSalary(2))
@@ -51,7 +50,6 @@ public class DepartmentServiceImplTest {
         Assertions.assertEquals(2, departmentService.findEmployeeWithMinSalary(2));
         verify(departmentService, atLeast(1)).findEmployeeWithMinSalary(2);
     }
-
     @Test
     public void shouldFindEmployeesByDepartments() {
         when(departmentService.findEmployeesByDepartments())

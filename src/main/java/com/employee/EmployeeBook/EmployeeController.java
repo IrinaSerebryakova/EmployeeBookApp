@@ -23,6 +23,7 @@ public class EmployeeController {
                         @RequestParam ("salary") int salary) throws EmployeeAlreadyAdded, ArrayIsFull {
                      return employeeService.put(lastName,firstName,department,salary);
     }
+
     @GetMapping(path = "/remove")
      public Employee remove(@RequestParam ("lastName") String lastName,
                           @RequestParam ("firstName") String firstName) throws EmployeeNotFound {

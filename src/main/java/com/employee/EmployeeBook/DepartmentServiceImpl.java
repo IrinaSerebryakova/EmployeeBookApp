@@ -11,7 +11,6 @@ import static java.util.stream.Collectors.groupingBy;
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
     private final EmployeeServiceImpl employeeService;
-
     public DepartmentServiceImpl(EmployeeServiceImpl employeeService) {
         this.employeeService = employeeService;
     }

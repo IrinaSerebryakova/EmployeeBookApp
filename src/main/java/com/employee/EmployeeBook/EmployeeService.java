@@ -13,4 +13,5 @@ public interface EmployeeService {
     Map<String, Employee> printAll();
     String checkAndCorrectName(String name);
     void checkNumber(Integer... numbers);
+
 }

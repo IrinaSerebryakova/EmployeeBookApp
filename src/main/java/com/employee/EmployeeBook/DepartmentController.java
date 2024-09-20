@@ -10,7 +10,6 @@ import java.util.*;
 @RequestMapping("/departments")
 public class DepartmentController {
     private final DepartmentServiceImpl departmentService;
-
     public DepartmentController(DepartmentServiceImpl departmentService) {   // инжектим сервис в контроллер
         this.departmentService = departmentService;
     }
