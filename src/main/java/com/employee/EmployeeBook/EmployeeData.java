@@ -14,6 +14,6 @@ public class EmployeeData {
             "Восточная Марина", new Employee("Восточная", "Марина", departments[3], 110000),
             "Васильева Эльвира", new Employee("Васильева", "Эльвира", departments[4], 75000),
             "Сухорукова Светлана", new Employee("Сухорукова", "Светлана", departments[3], 138000),
-            "Сухоруков Вячеслав", new Employee("Сухоруков", "Вячеслав", departments[2], 120000)
+            "Сухоруков Вячеслав", new Employee("Сухоруков", "Вячеслав", departments[1], 120000)
     ));
 }
