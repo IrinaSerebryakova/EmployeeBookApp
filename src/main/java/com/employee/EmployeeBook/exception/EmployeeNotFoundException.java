@@ -3,9 +3,9 @@ package com.employee.EmployeeBook.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus (HttpStatus.ALREADY_REPORTED)
-public class EmployeeAlreadyAdded extends RuntimeException{
-public EmployeeAlreadyAdded(String message) {
+@ResponseStatus (HttpStatus.NOT_FOUND)
+public class EmployeeNotFoundException extends RuntimeException{
+      public EmployeeNotFoundException(String message) {
         super(message);
     }
 }

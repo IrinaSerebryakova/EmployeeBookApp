@@ -13,7 +13,6 @@ public class DepartmentController {
     public DepartmentController(DepartmentServiceImpl departmentService) {   // инжектим сервис в контроллер
         this.departmentService = departmentService;
     }
-
     @GetMapping("/max-salary")
     public Employee findEmployeeWithMaxSalaryByDepartmentId(@RequestParam ("department") int department) {
         return departmentService.findEmployeeWithMaxSalary(department);

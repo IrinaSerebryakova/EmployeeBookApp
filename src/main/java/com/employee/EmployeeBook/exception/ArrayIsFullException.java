@@ -1,11 +1,11 @@
 package com.employee.EmployeeBook.exception;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus(HttpStatus.BAD_REQUEST)
-public class IncorrectInput extends RuntimeException{
- public IncorrectInput(String message) {
+@ResponseStatus(HttpStatus.CONFLICT)
+public class ArrayIsFullException extends RuntimeException {
+    public ArrayIsFullException(String message) {
         super(message);
     }
 }
-

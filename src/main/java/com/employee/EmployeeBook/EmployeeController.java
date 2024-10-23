@@ -1,8 +1,8 @@
 package com.employee.EmployeeBook;
 
-import com.employee.EmployeeBook.exception.ArrayIsFull;
-import com.employee.EmployeeBook.exception.EmployeeAlreadyAdded;
-import com.employee.EmployeeBook.exception.EmployeeNotFound;
+import com.employee.EmployeeBook.exception.ArrayIsFullException;
+import com.employee.EmployeeBook.exception.EmployeeAlreadyAddedException;
+import com.employee.EmployeeBook.exception.EmployeeNotFoundException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,18 +20,18 @@ public class EmployeeController {
     public Employee put(@RequestParam ("lastName") String lastName,
                         @RequestParam ("firstName") String firstName,
                         @RequestParam ("department") int department,
-                        @RequestParam ("salary") int salary) throws EmployeeAlreadyAdded, ArrayIsFull {
+                        @RequestParam ("salary") int salary) throws EmployeeAlreadyAddedException, ArrayIsFullException {
                      return employeeService.put(lastName,firstName,department,salary);
     }
 
     @GetMapping(path = "/remove")
      public Employee remove(@RequestParam ("lastName") String lastName,
-                          @RequestParam ("firstName") String firstName) throws EmployeeNotFound {
+                          @RequestParam ("firstName") String firstName) throws EmployeeNotFoundException {
         return employeeService.remove(lastName,firstName);
     }
     @GetMapping(path = "/find")
     public Employee find(@RequestParam ("lastName") String lastName,
-                         @RequestParam ("firstName") String firstName) throws EmployeeNotFound {
+                         @RequestParam ("firstName") String firstName) throws EmployeeNotFoundException {
        return  employeeService.find(lastName,firstName);
     }
 
